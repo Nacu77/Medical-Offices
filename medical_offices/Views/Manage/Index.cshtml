@@ -1,0 +1,49 @@
+﻿@model medical_offices.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card text-dark">
+                <div class="card-header text-center">
+                    @ViewBag.Title
+                </div>
+
+                <div class="card-body">
+                    <p class="text-success">@ViewBag.StatusMessage</p>
+                    <h4>Change your account settings</h4>
+                    <hr />
+
+                    @Html.LabelFor(m => m.Person.FirstName, "First Name:")
+                    <p>@Model.Person.FirstName</p>
+                    <hr />
+
+                    @Html.LabelFor(m => m.Person.LastName, "Last Name:")
+                    <p>@Model.Person.LastName</p>
+                    <hr />
+
+                    @Html.ActionLink("Update Your Profile", "EditPerson", new { id = Model.Person.PersonId }, new { @class = "btn btn-warning" })
+                    <hr />
+                    
+                    <dl class="dl-horizontal">
+                        <dt>Password:</dt>
+                        <dd>
+                            [
+                            @if (Model.HasPassword)
+                            {
+                                @Html.ActionLink("Change your password", "ChangePassword")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Create", "SetPassword")
+                            }
+                            ]
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

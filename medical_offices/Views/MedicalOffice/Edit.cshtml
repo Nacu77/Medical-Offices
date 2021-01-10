@@ -1,0 +1,59 @@
+﻿@model medical_offices.Models.Entities.MedicalOffice
+@{
+    ViewBag.Title = "Edit";
+}
+
+<br />
+<div class="container bg-light text-dark mt-5 pt-5 pb-3">
+    <h2 class="text-center mb-3">Edit Your Medical Office</h2>
+    @using (Html.BeginForm(actionName: "Edit", controllerName: "MedicalOffice"))
+    {
+        @Html.HttpMethodOverride(HttpVerbs.Put)
+        @Html.HiddenFor(office => office.MedicalOfficeId)
+
+        @Html.Label("Name", "Name:")
+        @Html.Editor("Name", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+        <hr />
+
+        @Html.Label("ContactNumber", "Contact number:")
+        @Html.Editor("ContactNumber", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessage("ContactNumber", "", new { @class = "text-danger" })
+        <hr />
+
+        @Html.LabelFor(office => office.Address.Country, "Country:")
+        @Html.EditorFor(office => office.Address.Country, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(office => office.Address.Country, "", new { @class = "text-danger" })
+        <hr />
+
+        @Html.LabelFor(office => office.Address.City, "City:")
+        @Html.EditorFor(office => office.Address.City, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(office => office.Address.City, "", new { @class = "text-danger" })
+        <hr />
+
+        @Html.LabelFor(office => office.Address.Street, "Street:")
+        @Html.EditorFor(office => office.Address.Street, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(office => office.Address.Street, "", new { @class = "text-danger" })
+        <hr />
+
+        @Html.LabelFor(office => office.Address.Number, "Number:")
+        @Html.EditorFor(office => office.Address.Number, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(office => office.Address.Number, "", new { @class = "text-danger" })
+        <hr />
+
+        @Html.LabelFor(office => office.ServicesList, "Choose services:")
+        <br />
+        for (int i = 0; i < Model.ServicesList.Count; i++)
+        {
+            @Html.HiddenFor(office => office.ServicesList[i].Id)
+            @Html.HiddenFor(office => office.ServicesList[i].Name)
+
+            @Html.CheckBoxFor(office => office.ServicesList[i].Checked)
+            @Html.DisplayFor(office => office.ServicesList[i].Name)
+            <br />
+        }
+        <hr />
+
+        <button class="btn btn-warning btn-block" type="submit">Update</button>
+    }
+</div>

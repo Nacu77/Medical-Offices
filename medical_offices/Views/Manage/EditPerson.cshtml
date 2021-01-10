@@ -1,0 +1,36 @@
+﻿@model medical_offices.Models.Entities.Person
+@{
+    ViewBag.Title = "EditPerson";
+}
+
+<div class="container text-dark mt-5 pt-5 pb-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card text-dark">
+                <div class="card-header text-center">
+                    <h2 class="text-center mb-3">Edit Your Profile</h2>
+                </div>
+
+                <div class="card-body">
+                    @using (Html.BeginForm(actionName: "EditPerson", controllerName: "Manage"))
+                    {
+                        @Html.HttpMethodOverride(HttpVerbs.Put)
+                        @Html.HiddenFor(person => person.PersonId)
+
+                        @Html.Label("FirstName", "First Name:")
+                        @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("FirstName", "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.Label("LastName", "Last Name:")
+                        @Html.Editor("LastName", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("LastName", "", new { @class = "text-danger" })
+                        <hr />
+
+                        <button class="btn btn-warning btn-block" type="submit">Update</button>
+                    }
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>

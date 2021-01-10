@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!-- HOME SECTION -->
+<header id="home-section">
+    <div class="dark-overlay">
+        <div class="home-inner container">
+
+            <div class="row mb-3">
+                <div class="col-md-8 offset-2">
+                    <h1 class="display-4 text-center">Make an appointment for a consultation in a few minutes!</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="d-flex">
+                        <div class="p-4">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4">
+                            It's easy and fast to make an appointment for a consultation.
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="p-4">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4">
+                            There is a variety of medical offices to choose from.
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="p-4">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4">
+                            You can register your medical offices on the website.
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="p-4">
+                            <i class="fas fa-check fa-2x"></i>
+                        </div>
+                        <div class="p-4">
+                            It's free to make an appointment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<!-- EXPLORE HEAD -->
+<section id="explore-head-section" class="bg-light text-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center py-5">
+                <h1 class="display-4">Do you have a health problem?</h1>
+                <p class="lead">We recommend you to take a look at the medical offices that are currently available in the website, and if you find what you were looking for, don't hesitate to make an appointment!</p>
+                @Html.ActionLink("Medical Offices", "Index", "MedicalOffice", null, new { @class = "btn btn-outline-secondary" })
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer id="main-footer" class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center py-4">
+                <h3>Medical Offices</h3>
+                <p>Copyright &copy;</p>
+                @Html.ActionLink("About Us", "About", "Home", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</footer>
