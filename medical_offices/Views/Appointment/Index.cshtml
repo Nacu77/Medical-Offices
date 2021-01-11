@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Your Appointments";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="card text-center text-dark">
+                <div class="card-header">@ViewBag.Title</div>
+                <div class="card-body">
+                    @foreach(var appointment in ViewBag.Appointments)
+                    {
+                        using(Html.BeginForm(actionName: "Details", controllerName: "Appointment", method: FormMethod.Get, routeValues: new { id = appointment.AppointmentId }))
+                        {
+                            <button class="btn btn-info btn-block">@appointment.Date</button>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model medical_offices.Models.Entities.Person
+@{
+    ViewBag.Title = "New";
+}
+
+<div class="container text-dark mt-5 pt-5 pb-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    Create A Person
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm(actionName: "New", controllerName: "Person", method: FormMethod.Post))
+                    {
+                        @Html.Label("FirstName", "First Name:")
+                        @Html.TextBox("FirstName", null, new { @class = "form-control mb-3" })
+                        @Html.ValidationMessage("FirstName", "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.Label("LastName", "Last Name:")
+                        @Html.TextBox("LastName", null, new { @class = "form-control mb-3" })
+                        @Html.ValidationMessage("LastName", "", new { @class = "text-danger" })
+                        <hr />
+
+                        <button class="btn btn-primary btn-block" type="submit">Create!</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

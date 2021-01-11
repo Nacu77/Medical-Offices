@@ -1,0 +1,42 @@
+﻿@model medical_offices.Models.Entities.Address
+@{
+    ViewBag.Title = "New";
+}
+
+<div class="container text-dark mt-5 pt-5 pb-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    Create An Address
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm(actionName: "New", controllerName: "Address", method: FormMethod.Post))
+                    {
+                        @Html.Label("Country", "Country:")
+                        @Html.TextBox("Country", null, new { @class = "form-control mb-3" })
+                        @Html.ValidationMessage("Country", "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.Label("City", "City:")
+                        @Html.TextBox("City", null, new { @class = "form-control mb-3" })
+                        @Html.ValidationMessage("City", "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.Label("Street", "Street:")
+                        @Html.TextBox("Street", null, new { @class = "form-control mb-3" })
+                        @Html.ValidationMessage("Street", "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.Label("Number", "Number:")
+                        @Html.TextBox("Number", null, new { @class = "form-control mb-3" })
+                        @Html.ValidationMessage("Number", "", new { @class = "text-danger" })
+                        <hr />
+
+                        <button class="btn btn-primary btn-block" type="submit">Create!</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

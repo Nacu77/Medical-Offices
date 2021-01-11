@@ -1,0 +1,26 @@
+﻿@model medical_offices.Models.Entities.Service
+@{
+    ViewBag.Title = "New";
+}
+
+<div class="container text-dark mt-5 pt-5 pb-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    Create A New Service
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm(actionName: "New", controllerName: "Service", method: FormMethod.Post))
+                    {
+                        @Html.Label("Name", "Name:")
+                        @Html.TextBox("Name", null, new { placeholder = "Type in service's name", @class = "form-control mb-3" })
+                        @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+
+                        <button class="btn btn-primary btn-block" type="submit">Create</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

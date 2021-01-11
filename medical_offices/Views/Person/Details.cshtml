@@ -1,0 +1,30 @@
+﻿@model medical_offices.Models.Entities.Person
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="card text-center text-dark">
+                <div class="card-header">Person</div>
+                <div class="card-body">
+                    @Html.Label("FirstName", "First Name:")
+                    <p>@Model.FirstName</p>
+                    <hr />
+
+                    @Html.Label("LastName", "Last Name:")
+                    <p>@Model.LastName</p>
+                    <hr />
+
+                    @Html.ActionLink("Edit Person", "Edit", new { id = Model.PersonId }, new { @class = "btn btn-warning btn-block" })
+                    @using (Html.BeginForm(actionName: "Delete", controllerName: "Person", method: FormMethod.Post, routeValues: new { id = Model.PersonId }))
+                    {
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button class="btn btn-danger btn-block" type="submit">Delete Person</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

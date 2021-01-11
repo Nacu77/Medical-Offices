@@ -46,6 +46,8 @@
                                 <button class="btn btn-danger btn-block" type="submit">Delete Medical Office</button>
                             }
                         }
+
+                        @Html.ActionLink(linkText: "Make An Appointment", actionName: "New", controllerName: "Appointment", routeValues: new { id = Model.MedicalOfficeId }, htmlAttributes: new { @class = "btn btn-primary btn-block" })
                     }
                 </div>
             </div>

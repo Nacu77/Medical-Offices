@@ -1,0 +1,45 @@
+﻿@model medical_offices.Models.Entities.Address
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container text-dark mt-5 pt-5 pb-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    Change An Address
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm(actionName: "Edit", controllerName: "Address"))
+                    {
+                        @Html.HttpMethodOverride(HttpVerbs.Put)
+                        @Html.HiddenFor(a => a.AddressId)
+
+                        @Html.LabelFor(a => a.Country, "Country:")
+                        @Html.EditorFor(a => a.Country, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                        @Html.ValidationMessageFor(a => a.Country, "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.LabelFor(a => a.City, "City:")
+                        @Html.EditorFor(a => a.City, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                        @Html.ValidationMessageFor(a => a.City, "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.LabelFor(a => a.Street, "Street:")
+                        @Html.EditorFor(a => a.Street, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                        @Html.ValidationMessageFor(a => a.Street, "", new { @class = "text-danger" })
+                        <hr />
+
+                        @Html.LabelFor(a => a.Number, "Number:")
+                        @Html.EditorFor(a => a.Number, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                        @Html.ValidationMessageFor(a => a.Number, "", new { @class = "text-danger" })
+                        <hr />
+
+                        <button class="btn btn-warning btn-block" type="submit">Change</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
