@@ -17,19 +17,28 @@ namespace medical_offices.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var userName = User.Identity.GetUserName();
-            List<Person> people = ctx.People.ToList();
-            Person person = null;
-            foreach (var p in people)
+            if (User.IsInRole("Admin"))
             {
-                if (p.ApplicationUser.UserName == userName)
+                ViewBag.Appointments = ctx.Appointments.ToList();
+            }
+            else
+            {
+                var userName = User.Identity.GetUserName();
+                List<Person> people = ctx.People.ToList();
+                Person person = null;
+                foreach (var p in people)
                 {
-                    person = p;
-                    break;
+                    if (p.ApplicationUser.UserName == userName)
+                    {
+                        person = p;
+                        break;
+                    }
                 }
+
+                ViewBag.Appointments = person.Appointments;
+                
             }
 
-            ViewBag.Appointments = person.Appointments;
             return View();
         }
 

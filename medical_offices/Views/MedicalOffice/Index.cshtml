@@ -3,32 +3,35 @@
 }
 
 <div class="container mt-5 pt-5">
-    @Html.ActionLink("Add Medical Office", "New", null, new { @class = "btn btn-success btn-block mb-5" })
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Add Medical Office", "New", null, new { @class = "btn btn-success btn-block mb-5" })
+    }
 
     <div class="card-columns">
-    @foreach (var medicalOffice in ViewBag.MedicalOffices)
-    {
-        <div class="card text-center mb-3 text-dark border-danger">
-            <div class="card-header">
-                @medicalOffice.Name
-            </div>
-            <div class="card-body">
-                <p class="card-text">@medicalOffice.Address.Country, @medicalOffice.Address.City, Street @medicalOffice.Address.Street, Number @medicalOffice.Address.Number</p>
-                <ul class="list-group mb-2">
-                    @foreach (var service in medicalOffice.Services)
+        @foreach (var medicalOffice in ViewBag.MedicalOffices)
+        {
+            <div class="card text-center mb-3 text-dark border-danger">
+                <div class="card-header">
+                    @medicalOffice.Name
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@medicalOffice.Address.Country, @medicalOffice.Address.City, Street @medicalOffice.Address.Street, Number @medicalOffice.Address.Number</p>
+                    <ul class="list-group mb-2">
+                        @foreach (var service in medicalOffice.Services)
+                        {
+                            <li class="list-group-item">@service.Name</li>
+                        }
+                    </ul>
+                    @using (Html.BeginForm(actionName: "Details", controllerName: "MedicalOffice", method: FormMethod.Get, routeValues: new { id = medicalOffice.MedicalOfficeId }))
                     {
-                        <li class="list-group-item">@service.Name</li>
+                        <button class="btn btn-dark" type="submit">More Details</button>
                     }
-                </ul>
-                @using (Html.BeginForm(actionName: "Details", controllerName: "MedicalOffice", method: FormMethod.Get, routeValues: new { id = medicalOffice.MedicalOfficeId }))
-                {
-                    <button class="btn btn-dark" type="submit">More Details</button>
-                }
+                </div>
+                <div class="card-footer text-muted">
+                    @medicalOffice.Person.LastName's medical office
+                </div>
             </div>
-            <div class="card-footer text-muted">
-                @medicalOffice.Person.LastName's medical office
-            </div>
-        </div>
-    }
+        }
     </div>
 </div>

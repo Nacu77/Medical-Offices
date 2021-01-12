@@ -11,7 +11,6 @@ namespace medical_offices.Models.Entities
     {
         public int AppointmentId { get; set; }
 
-        [Required]
         [DateValidator]
         public DateTime Date { get; set; }
 

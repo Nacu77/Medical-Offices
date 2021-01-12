@@ -10,7 +10,7 @@ namespace medical_offices.Models.Validations
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            DateTime dateStart = (DateTime)validationContext.ObjectInstance;
+            DateTime dateStart = (DateTime)value;
             return (dateStart > DateTime.Now) ? ValidationResult.Success : new ValidationResult("This is not a correct date!");
         }
     }

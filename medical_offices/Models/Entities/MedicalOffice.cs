@@ -11,11 +11,9 @@ namespace medical_offices.Models.Entities
     {
         public int MedicalOfficeId { get; set; }
 
-        [Required]
         [RegularExpression(@"^[0-9A-Za-z ]+$", ErrorMessage = "This is not a valid office name!")]
         public string Name { get; set; }
 
-        [Required]
         [RegularExpression(@"^07(\d{8})$", ErrorMessage = "This is not a valid phone number!")]
         public string ContactNumber { get; set; }
 
