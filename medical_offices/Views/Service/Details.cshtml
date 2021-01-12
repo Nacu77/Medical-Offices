@@ -5,12 +5,17 @@
 
 <div class="container mt-5 pt-5">
     <div class="display-4 mb-3 text-center">@Model.Name</div>
-    @Html.ActionLink("Edit Service", "Edit", new { id = Model.ServiceId }, new { @class = "btn btn-warning btn-block" })
-    @using (Html.BeginForm(actionName: "Delete", controllerName: "Service", method: FormMethod.Post, routeValues: new { id = Model.ServiceId }))
+
+    @if (User.IsInRole("Admin"))
     {
-        @Html.HttpMethodOverride(HttpVerbs.Delete)
-        <button class="btn btn-danger btn-block mb-5" type="submit">Delete Service</button>
+        @Html.ActionLink("Edit Service", "Edit", new { id = Model.ServiceId }, new { @class = "btn btn-warning btn-block" })
+        using (Html.BeginForm(actionName: "Delete", controllerName: "Service", method: FormMethod.Post, routeValues: new { id = Model.ServiceId }))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Delete)
+            <button class="btn btn-danger btn-block mb-5" type="submit">Delete Service</button>
+        }
     }
+
     <div class="card-columns">
         @foreach (var medicalOffice in Model.MedicalOffices)
         {

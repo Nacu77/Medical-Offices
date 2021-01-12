@@ -1,16 +1,20 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Services";
 }
 
 <div class="container mt-5 pt-5">
-    @Html.ActionLink("Add New Service", "New", null, new { @class = "btn btn-success btn-block mb-5" })
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Add New Service", "New", null, new { @class = "btn btn-success btn-block mb-5" })
+    }
 
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-body p-0">
+            <div class="card text-center text-dark">
+                <div class="card-header">@ViewBag.Title</div>
+                <div class="card-body">
                     @foreach (var service in ViewBag.Services)
-                    { 
+                    {
                         using (Html.BeginForm(actionName: "Details", controllerName: "Service", method: FormMethod.Get, routeValues: new { id = service.ServiceId }))
                         {
                             <button class="btn btn-outline-dark btn-block" type="submit">@service.Name</button>

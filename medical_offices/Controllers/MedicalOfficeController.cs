@@ -37,6 +37,7 @@ namespace medical_offices.Controllers
             return HttpNotFound("Missing medical office id parameter!");
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult New()
         {
@@ -46,6 +47,7 @@ namespace medical_offices.Controllers
             return View(medicalOffice);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult New(MedicalOffice medicalOfficeRequest)
         {
@@ -82,6 +84,7 @@ namespace medical_offices.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -103,6 +106,7 @@ namespace medical_offices.Controllers
             return HttpNotFound("Missing office id parameter!");
         }
 
+        [Authorize]
         [HttpPut]
         public ActionResult Edit(int id, MedicalOffice medicalOfficeRequest)
         {
@@ -138,6 +142,7 @@ namespace medical_offices.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete]
         public ActionResult Delete(int id)
         {

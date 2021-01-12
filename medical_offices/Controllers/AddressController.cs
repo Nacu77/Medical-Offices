@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace medical_offices.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AddressController : Controller
     {
         private ApplicationDbContext ctx = new ApplicationDbContext();

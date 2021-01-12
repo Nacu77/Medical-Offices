@@ -12,6 +12,7 @@ namespace medical_offices.Controllers
     {
         private ApplicationDbContext ctx = new ApplicationDbContext();
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Index()
         {
@@ -20,6 +21,7 @@ namespace medical_offices.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Details(int? id)
         {
@@ -35,6 +37,7 @@ namespace medical_offices.Controllers
             return HttpNotFound("Missing service id parameter!");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult New()
         {
@@ -42,6 +45,7 @@ namespace medical_offices.Controllers
             return View(service);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult New(Service serviceRequest)
         {
@@ -61,6 +65,7 @@ namespace medical_offices.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -76,6 +81,7 @@ namespace medical_offices.Controllers
             return HttpNotFound("Missing service id parameter!");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public ActionResult Edit(int id, Service serviceRequest)
         {
@@ -99,6 +105,7 @@ namespace medical_offices.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public ActionResult Delete(int id)
         {

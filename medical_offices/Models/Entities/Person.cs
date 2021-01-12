@@ -10,7 +10,13 @@ namespace medical_offices.Models.Entities
     public class Person
     {
         public int PersonId { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Za-z \'\-]+$", ErrorMessage = "This is not a valid first name!")]
         public string FirstName { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Za-z \'\-]+$", ErrorMessage = "This is not a valid last name!")]
         public string LastName { get; set; }
 
         // one to one
