@@ -1,4 +1,5 @@
 ﻿using medical_offices.Models;
+using medical_offices.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -36,6 +37,15 @@ namespace medical_offices
                 {
                     userManager.AddToRole(admin.Id, "Admin");
                 }
+
+                var personAdmin = new Person
+                {
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    ApplicationUser = admin
+                };
+                ctx.People.Add(personAdmin);
+                ctx.SaveChanges();
             }
 
             if(!roleManager.RoleExists("SuperUser"))

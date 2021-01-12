@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace medical_offices.Models.Entities
 {
-    [Authorize(Roles = "Admin")]
     public class Address
     {
         public int AddressId { get; set; }
